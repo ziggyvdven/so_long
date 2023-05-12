@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:40:58 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/04 13:41:45 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:23:29 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,12 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include	"../libft/includes/libft.h"
+# include	"../libs/libft/includes/libft.h"
+# include	"../libs/MLX42/include/MLX42/MLX42.h"
+# include	<stdio.h>
+# include	<stdlib.h>
+# include	<stdbool.h>
 # include	<limits.h>
-
-typedef struct s_node	t_node;
-
-typedef struct s_stack
-{
-	t_node	*head_a;
-	t_node	*tail_a;
-	t_node	*head_b;
-	t_node	*tail_b;
-	int		size;
-	int		argc;
-}	t_stack;
 
 /*CHECKS*********************************/
 
@@ -39,3 +31,4 @@ typedef struct s_stack
 
 /*OPERATIONS******************************/
 
+#endif

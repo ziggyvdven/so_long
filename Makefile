@@ -6,7 +6,7 @@
 #    By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 13:45:36 by zvandeven         #+#    #+#              #
-#    Updated: 2023/05/04 13:54:43 by zvan-de-         ###   ########.fr        #
+#    Updated: 2023/05/11 16:27:32 by zvan-de-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,11 @@ G	= \033[0;32m
 
 # Program name
 NAME 			= so_long
+LIBMLX			= ./lib/MLX42
 
 # Compiler and flags
 CC				= gcc
-CFLAGS			= -Wall -Wextra -Werror -g
+CFLAGS			= -Wall -Wextra -Werror -Wunreachable-code -Ofast
 
 # others
 RM				= rm -f
@@ -43,25 +44,26 @@ SRCS_BONUS		= $(addprefix $(SRCS_PATH), $(SRCS_BONUS_FILES))
 BINDIR			= bin/
 
 # Includes
-INCLUDE_PATH	= includes/
-INCS			= -I $(INCLUDE_PATH)
-HEADER			= $(addprefix $(INCLUDES_PATH), $(HEADER_FILES))
+HEADERS			= -I ./include -I $(LIBMLX)/include -I $(LIBFT)/include
 
 # library and source files
-LIBFT				= libft/libft.a
-SRCS_FILES			= so_long.c \
+LIBFT			= ./libs/libft
+LIBMLX  		= ./libs/MLX42
+LIBS			= $(LIBFT)/libft.a $(LIBMLX)/build/libmlx42.a -ldl -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -pthread -lm
+SRCS_FILES		= so_long.c \
+
 					
-
-SRCS_BONUS_FILES	=	
-
 #------------------------------------------------------------------------------#
 #                                 RULES                                        #
 #------------------------------------------------------------------------------#
 
-all: $(NAME) 
+all: libft libmlx $(NAME) 
+
+libmlx:
+	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
 $(NAME): $(OBJS_PATH) $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBFT) -I includes/so_long.h
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS) $(HEADERS)
 		@echo "$(G)\n -- $(NAME) made 🐙 --$(RT)"
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c 
@@ -70,21 +72,22 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 $(OBJS_PATH):
 	@mkdir -p $(OBJS_PATH)
 	
-$(LIBFT):
+libft:
 	@echo "$(G)\n -- LOADING --$(RT)"
-	@$(MAKE) -C libft
+	@$(MAKE) -C $(LIBFT)
 
 bonus: 
 	@$(MAKE) "NAME=$(NAME_BONUS)" "OBJS=$(OBJS_BONUS)" "SRCS_FILES=$(SRCS_BONUS_FILES)" "SRCS_PATH=$(BONUS_PATH)"
 
 clean:
 	@rm -rf $(OBJS) $(OBJS_PATH)
-	@$(MAKE) -C libft clean
+	@$(MAKE) -C $(LIBFT) clean
+	@rm -rf $(LIBMLX)/build
 
 fclean: clean
 	@$(RM) $(NAME)
-	@$(MAKE) -C libft fclean
+	@$(MAKE) -C $(LIBFT) fclean
 
 re: fclean all
 
-.PHONY:		all bonus clean fclean re
+.PHONY:		all, clean, fclean, re, libmlx
