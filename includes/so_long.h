@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:40:58 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/12 16:38:33 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/18 13:09:28 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_game
 	mlx_t		*mlx;
 	int			argc;
 	char		*map;
+	t_node		*map_lst;
 	uint32_t	move_count;
 	uint32_t	width;
 	uint32_t	height;
@@ -46,6 +47,7 @@ void			ft_keyhook(mlx_key_data_t keydata, void *param);
 void			ft_scrollhook(double xdelta, double ydelta, void *param);
 
 /*init**********************************/
+t_game			*map_init(t_game *game);
 t_game			*map_pars(t_game *game);
 t_game			*game_init(int argc, char **argv);
 

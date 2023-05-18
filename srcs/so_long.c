@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:51:12 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/12 16:49:52 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/18 13:27:28 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int32_t	main(int argc, char **argv)
 	if (mlx_image_to_window(game->mlx, img, 0, 0) < 0)
 		error();
 	ft_keyhooks(game->mlx, img);
-	mlx_loop(game->mlx);
-	mlx_terminate(game->mlx);
+	// mlx_loop(game->mlx);
+	// mlx_terminate(game->mlx);
 	return (EXIT_SUCCESS);
 }
 

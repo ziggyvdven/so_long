@@ -6,7 +6,7 @@
 #    By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 13:45:36 by zvandeven         #+#    #+#              #
-#    Updated: 2023/05/12 15:59:10 by zvan-de-         ###   ########.fr        #
+#    Updated: 2023/05/18 12:28:13 by zvan-de-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ LIBMLX			= ./lib/MLX42
 
 # Compiler and flags
 CC				= gcc
-CFLAGS			= -Wall -Wextra -Werror -Wunreachable-code -Ofast
+CFLAGS			= -Wall -Wextra -Werror -Wunreachable-code -Ofast -g
 
 # others
 RM				= rm -f

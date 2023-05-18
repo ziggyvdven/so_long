@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 11:37:21 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/04/28 16:31:37 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/18 12:54:51 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
-t_node		*ft_lstnew(int content);
+t_node		*ft_lstnew(char *content);
 void		ft_lstadd_front(t_node **lst, t_node *new);
 int			ft_lstsize(t_node *lst);
 t_node		*ft_lstlast(t_node *lst);
@@ -75,6 +75,7 @@ void		ft_lstadd_back(t_node **lst, t_node *new);
 void		ft_lstdelone(t_node *lst, void (*del)(int));
 void		ft_lstclear(t_node **lst, void (*del)(int));
 void		ft_lstiter(t_node *lst, void (*f)(int));
+void		ft_printlst(t_node *map_lst);
 t_node		*ft_lstmap(t_node *lst, void *(*f)(int), void (*del)(int));
 void		ft_putnbr_base(int nbr, char *base);
 int			ft_strisdigit(char *str);
