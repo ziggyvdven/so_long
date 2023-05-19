@@ -12,7 +12,7 @@
 			"program": "/Users/zvan-de-/42cursus/so_long/so_long",
 			"args": ["map1.ber"],
 			"stopAtEntry": false,
-			"cwd": "${fileDirname}",
+			"cwd": "/Users/zvan-de-/42cursus/so_long/",
 			"environment": [],
 			"externalConsole": false,
 			"MIMode": "lldb"

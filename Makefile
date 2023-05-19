@@ -6,7 +6,7 @@
 #    By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 13:45:36 by zvandeven         #+#    #+#              #
-#    Updated: 2023/05/18 12:28:13 by zvan-de-         ###   ########.fr        #
+#    Updated: 2023/05/18 16:06:19 by zvan-de-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ HEADERS			= -I ./include -I $(LIBMLX)/include -I $(LIBFT)/include
 LIBFT			= ./libs/libft
 LIBMLX  		= ./libs/MLX42
 LIBS			= $(LIBFT)/libft.a $(LIBMLX)/build/libmlx42.a -ldl -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -pthread -lm
-SRCS_FILES		= so_long.c keyhooks.c init.c map_pars.c\
+SRCS_FILES		= so_long.c keyhooks.c init.c map_pars.c error.c map_checks.c\
 
 					
 #------------------------------------------------------------------------------#

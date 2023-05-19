@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:37:10 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/12 16:15:35 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/19 16:28:45 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@ t_game	*game_init(int argc, char **argv)
 	if (!game)
 		return (NULL);
 	game->argc = argc;
-	game->map = ft_strjoin("./maps/", argv[1]);
+	game->map_lst = NULL;
+	game->map_path = ft_strjoin("maps/", argv[1]);
+	game->map = NULL;
 	game->mlx = NULL;
 	game->width = 0;
 	game->height = 0;
 	game->move_count = 0;
+	game->collectables = 0;
 	return (game);
 }

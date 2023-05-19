@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:40:58 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/18 13:09:28 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/19 17:42:34 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ typedef struct s_game
 {
 	mlx_t		*mlx;
 	int			argc;
-	char		*map;
+	char		*map_path;
+	char		**map;
+	int			collectables;
 	t_node		*map_lst;
 	uint32_t	move_count;
 	uint32_t	width;
@@ -39,18 +41,26 @@ typedef struct s_game
 
 
 /*CHECKS*********************************/
-void			putstr_exit(char *str, int fd);
+void			map_valid(t_game *game);
+int				map_rec(t_game *game);
+int				map_close(t_game *game);
+char			*map_entries(t_game *game, char *str);
+char			*map_elements(t_game *game);
 
 /*KEYHOOKS*******************************/
 void			ft_keyhooks(mlx_t *mlx, void *param);
 void			ft_keyhook(mlx_key_data_t keydata, void *param);
 void			ft_scrollhook(double xdelta, double ydelta, void *param);
 
-/*init**********************************/
+/*INIT**********************************/
 t_game			*map_init(t_game *game);
 t_game			*map_pars(t_game *game);
 t_game			*game_init(int argc, char **argv);
+t_game			*make_map(t_game *game);
 
-/*OPERATIONS******************************/
+/*ERRORS******************************/
+void			exit_failure(t_game *game, char *error_message);
+void			putstr_exit(char *str, int fd);
+void			exit_succes(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 13:45:36 by zvandeven         #+#    #+#              #
-#    Updated: 2023/05/18 12:55:41 by zvan-de-         ###   ########.fr        #
+#    Updated: 2023/05/19 15:51:55 by zvan-de-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ string/ft_strmapi.c string/ft_striteri.c utils/ft_putchar_fd.c utils/ft_putstr_f
 utils/ft_putendl_fd.c utils/ft_putnbr_fd.c string/ft_split.c string/ft_strisdigit.c\
 list/ft_lstnew.c list/ft_lstadd_front.c list/ft_lstsize.c \
 list/ft_lstlast.c list/ft_lstdelone.c list/ft_lstadd_back.c utils/ft_atol.c\
-list/ft_lstiter.c list/ft_lstclear.c utils/ft_putnbr_base.c list/ft_printlst.c\
+list/ft_lstiter.c list/ft_lstclear.c utils/ft_putnbr_base.c list/ft_printlst.c list/ft_lstclear.c\
 utils/ft_swap.c\
 printf/ft_printf.c\
 printf/ft_printf_utils.c\

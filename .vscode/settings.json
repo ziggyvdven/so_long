@@ -1,5 +1,7 @@
 {
 	"files.associations": {
-		"mlx42.h": "c"
+		"mlx42.h": "c",
+		"__config": "cpp",
+		"so_long.h": "c"
 	}
 }
