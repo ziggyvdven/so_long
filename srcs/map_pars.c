@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:16 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/19 17:29:33 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/19 18:02:30 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ t_game	*map_pars(t_game *game)
 		return (NULL);
 	game = map_init(game);
 	map_valid(game);
-	// ft_printlst(game->map_lst);
+	ft_printlst(game->map_lst);
 	return (game);
 }
