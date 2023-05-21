@@ -6,11 +6,52 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:37:10 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/19 16:28:45 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/21 17:22:22 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+t_data	*init_data(void)
+{
+	t_data	*data;
+
+	data = (t_data *)ft_calloc((sizeof(t_data)), 1);
+	if (!data)
+		return (NULL);
+	data->player = 0;
+	data->exit = 0;
+	data->x = -1;
+	data->y = -1;
+	return (data);
+}
+
+t_images	*init_images(void)
+{
+	t_images	*images;
+
+	images = (t_images *)ft_calloc((sizeof(t_images)), 1);
+	if (!images)
+		return (NULL);
+	images->wall = NULL;
+	images->floor = NULL;
+	images->coll = NULL;
+	return (images);
+}
+
+t_player	*init_player(void)
+{
+	t_player	*player;
+
+	player = (t_player *)ft_calloc((sizeof(t_player)), 1);
+	if (!player)
+		return (NULL);
+	player->x = 0;
+	player->y = 0;
+	player->move_count = 0;
+	player->img = NULL;
+	return (player);
+}
 
 t_game	*game_init(int argc, char **argv)
 {
@@ -26,7 +67,8 @@ t_game	*game_init(int argc, char **argv)
 	game->mlx = NULL;
 	game->width = 0;
 	game->height = 0;
-	game->move_count = 0;
 	game->collectables = 0;
+	game->img = init_images();
+	game->player = init_player();
 	return (game);
 }

@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:16 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/19 18:02:30 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/21 16:16:35 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_game	*make_map(t_game *game)
 void	map_valid(t_game *game)
 {
 	if (!(ft_strnstr(game->map_path, ".ber", strlen(game->map_path))))
-		putstr_exit("Error\nINVALID MAP (not .ber)", 1);
+		exit_failure(game, "Error\nINVALID MAP (not .ber)");
 	if (!map_rec(game))
 		exit_failure(game, "Error\nINVALID MAP (NOT RECTANGULAR)");
 	if (!map_close(game))

@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:51:48 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/19 16:31:35 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/21 17:22:44 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,30 +81,28 @@ char	*map_entries(t_game *game, char *str)
 
 char	*map_elements(t_game *game)
 {
-	int		player;
-	int		exit;
-	int		x;
-	int		y;
+	t_data	*data;
 
-	y = -1;
-	x = -1;
-	player = 0;
-	exit = 0;
-	while (game->map[++y] != NULL)
+	data = init_data();
+	while (game->map[++data->y] != NULL)
 	{
-		x = 0;
-		while (game->map[y][++x] != '\0')
+		data->x = 0;
+		while (game->map[data->y][++data->x] != '\0')
 		{
-			if (game->map[y][x] == 'P')
-				player++;
-			if (game->map[y][x] == 'E')
-				exit++;
+			if (game->map[data->y][data->x] == 'P')
+			{
+				game->player->x = data->x;
+				game->player->y = data->y;
+				data->player++;
+			}
+			if (game->map[data->y][data->x] == 'E')
+				data->exit++;
 		}
 	}
-	if (player != 1)
+	if (data->player != 1)
 		return ("Error\nINVALID MAP (PLAYERS)");
-	if (exit != 1)
+	if (data->exit != 1)
 		return ("Error\nINVALID MAP (EXITS)");
+	free (data);
 	return (0);
 }
-

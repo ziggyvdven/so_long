@@ -6,29 +6,23 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:51:12 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/19 17:48:17 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/21 17:07:43 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static void	error(void)
+void	ft_close(void *param)
 {
-	puts(mlx_strerror(mlx_errno));
-	exit(EXIT_FAILURE);
-}
+	t_game	*game;
 
-void	putstr_exit(char *str, int fd)
-{
-	ft_putstr_fd(str, fd);
-	exit(0);
+	game = param;
+	exit_succes(game);
 }
 
 int32_t	main(int argc, char **argv)
 {
 	t_game			*game;
-	mlx_image_t		*img = NULL;
-	mlx_texture_t	*texture = NULL;
 
 	game = game_init(argc, argv);
 	map_pars(game);
@@ -36,17 +30,10 @@ int32_t	main(int argc, char **argv)
 	game->mlx = mlx_init(game->width * 75, game->height * 75, "so_long", true);
 	if (!game->mlx)
 		exit_failure(game, "Error\nUNABLE TO INITIALIZE MLX");
-	texture = mlx_load_png("./textures/char.png");
-	img = mlx_texture_to_image(game->mlx, texture);
-	if (mlx_image_to_window(game->mlx, img, 0, 0) < 0)
-		error();
-	ft_keyhooks(game->mlx, img);
+	game = fill_map(game);
+	ft_player(game);
+	mlx_close_hook(game->mlx, &ft_close, game);
 	mlx_loop(game->mlx);
-	free (img);
-	img = NULL;
-	free (texture);
-	texture = NULL;
 	exit_succes(game);
 	return (0);
 }
-
