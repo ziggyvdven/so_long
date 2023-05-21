@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 15:09:47 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/21 15:54:13 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/21 17:35:57 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ t_game	*load_png(t_game *game)
 {
 	game->img->floor = make_image(game, "./textures/floor.png");
 	game->img->wall = make_image(game, "./textures/mac.png");
-	game->player->img = make_image(game, "./textures/char.png");
 	game->img->coll = make_image(game, "./textures/42_logo.png");
 	game->img->exit = make_image(game, "./textures/exit.png");
+	game->player->img = make_image(game, "./textures/char.png");
 	return (game);
 }

@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:51:48 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/21 17:22:44 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/21 17:37:16 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,45 +35,41 @@ int	map_rec(t_game *game)
 
 int	map_close(t_game *game)
 {
-	int	x;
-	int	y;
+	t_data	*d;
 
-	x = 0;
-	y = 0;
-	while (game->map[y][x] != '\0')
+	d = init_data();
+	while (game->map[d->y + 1][++d->x] != '\0')
 	{
-		if (game->map[0][x] != '1' || game->map[game->height - 1][x] != '1')
+		if (game->map[0][d->x] != '1'
+			|| game->map[game->height - 1][d->x] != '1')
 			return (0);
-		x++;
 	}
-	while (game->map[y] != NULL)
+	while (game->map[++d->y] != NULL)
 	{
-		if (game->map[y][0] != '1' || game->map[y][game->width - 1] != '1')
+		if (game->map[d->y][0] != '1'
+			|| game->map[d->y][game->width - 1] != '1')
 			return (0);
-		y++;
 	}
 	return (1);
 }
 
 char	*map_entries(t_game *game, char *str)
 {
-	int		x;
-	int		y;
+	t_data	*data;
 
-	y = 0;
-	while (game->map[y] != NULL)
+	data = init_data();
+	while (game->map[++data->y] != NULL)
 	{
-		x = 0;
-		while (game->map[y][x] != '\0')
+		data->x = 0;
+		while (game->map[data->y][++data->x] != '\0')
 		{
-			if (strchr(str, game->map[y][x]) == NULL)
+			if (strchr(str, game->map[data->y][data->x]) == NULL)
 				return ("Error\nINVALID MAP (UNRECOGNIZED ENTRY)");
-			if (game->map[y][x] == 'C')
+			if (game->map[data->y][data->x] == 'C')
 				game->collectables++;
-			x++;
 		}
-		y++;
 	}
+	free (data);
 	if (game->collectables == 0)
 		return ("Error\nINVALID MAP (COLLECTABLES)");
 	return (0);
@@ -99,10 +95,10 @@ char	*map_elements(t_game *game)
 				data->exit++;
 		}
 	}
+	free (data);
 	if (data->player != 1)
 		return ("Error\nINVALID MAP (PLAYERS)");
 	if (data->exit != 1)
 		return ("Error\nINVALID MAP (EXITS)");
-	free (data);
 	return (0);
 }

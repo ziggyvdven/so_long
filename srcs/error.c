@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:56:54 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/21 13:54:54 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/21 17:29:31 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,7 @@ void	exit_failure(t_game *game, char *error_message)
 	if (game->map_lst)
 		ft_lstclear(&game->map_lst, &del);
 	if (game->map)
-	{
-		while (game->map[y] != NULL)
-			free(game->map[y++]);
-		free(game->map);
-	}
+		ft_free_ar(game->map);
 	if (game->map_path)
 		free(game->map_path);
 	if (game->mlx)
@@ -50,11 +46,7 @@ void	exit_succes(t_game *game)
 	if (game->map_lst)
 		ft_lstclear(&game->map_lst, &del);
 	if (game->map)
-	{
-		while (game->map[y] != NULL)
-			free(game->map[y++]);
-		free(game->map);
-	}
+		ft_free_ar(game->map);
 	if (game->map_path)
 		free(game->map_path);
 	if (game->mlx)

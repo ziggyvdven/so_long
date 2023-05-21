@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 14:03:21 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/21 17:07:19 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/21 18:07:59 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 void	ft_moves(mlx_key_data_t keydata, void *param)
 {
-	t_game	*game;
+	t_game	*g;
 
-	game = param;
+	g = param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		exit(0);
-	if ((keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
-		&& keydata.action == MLX_PRESS && ft_movable(keydata, game) != 0)
-		ft_move(keydata, game);
-	if ((keydata.key == MLX_KEY_DOWN || keydata.key == MLX_KEY_S)
-		&& keydata.action == MLX_PRESS && ft_movable(keydata, game) != 0)
-		ft_move(keydata, game);
-	if ((keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_D)
-		&& keydata.action == MLX_PRESS && ft_movable(keydata, game) != 0)
-		ft_move(keydata, game);
-	if ((keydata.key == MLX_KEY_LEFT || keydata.key == MLX_KEY_A)
-		&& keydata.action == MLX_PRESS && ft_movable(keydata, game) != 0)
-		ft_move(keydata, game);
+	if ((mlx_is_key_down(g->mlx, MLX_KEY_UP)
+			|| mlx_is_key_down(g->mlx, MLX_KEY_W)) && ft_movable(keydata, g))
+		ft_move(keydata, g);
+	else if ((mlx_is_key_down(g->mlx, MLX_KEY_DOWN)
+			|| mlx_is_key_down(g->mlx, MLX_KEY_S)) && ft_movable(keydata, g))
+		ft_move(keydata, g);
+	else if ((mlx_is_key_down(g->mlx, MLX_KEY_LEFT)
+			|| mlx_is_key_down(g->mlx, MLX_KEY_A)) && ft_movable(keydata, g))
+		ft_move(keydata, g);
+	else if ((mlx_is_key_down(g->mlx, MLX_KEY_RIGHT)
+			|| mlx_is_key_down(g->mlx, MLX_KEY_D)) && ft_movable(keydata, g))
+		ft_move(keydata, g);
 }
 
 void	ft_move(mlx_key_data_t keydata, t_game *game)
