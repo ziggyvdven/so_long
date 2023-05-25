@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:40:58 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/21 17:24:36 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/24 19:31:56 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,15 @@ typedef struct s_game
 	t_player	*player;
 }				t_game;
 
+typedef struct s_map
+{
+	int			x;
+	int			y;
+	int			collectables;
+	int			exit;
+	char		**map;
+}				t_map;
+
 typedef struct s_player
 {
 	int			x;
@@ -72,6 +81,7 @@ int				map_rec(t_game *game);
 int				map_close(t_game *game);
 char			*map_entries(t_game *game, char *str);
 char			*map_elements(t_game *game);
+int				flood_fill(t_game *game);
 
 /*PLAYER*******************************/
 void			ft_player(t_game *game);

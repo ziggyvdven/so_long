@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 14:03:21 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/21 18:07:59 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/24 18:12:46 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_moves(mlx_key_data_t keydata, void *param)
 
 	g = param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		exit(0);
+		exit_succes(g);
 	if ((mlx_is_key_down(g->mlx, MLX_KEY_UP)
 			|| mlx_is_key_down(g->mlx, MLX_KEY_W)) && ft_movable(keydata, g))
 		ft_move(keydata, g);
