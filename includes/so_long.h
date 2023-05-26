@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zvandeven <zvandeven@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:40:58 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/24 19:31:56 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:40:19 by zvandeven        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,11 @@ typedef struct s_player
 typedef struct s_images
 {
 	mlx_image_t		*floor;
-	mlx_image_t		*wall;
+	mlx_image_t		*wall_t;
+	mlx_image_t		*wall_b;
+	mlx_image_t		*wall_l;
+	mlx_image_t		*wall_r;
+	mlx_image_t		*wall_e;
 	mlx_image_t		*coll;
 	mlx_image_t		*exit;
 }				t_images;
@@ -88,7 +92,7 @@ void			ft_player(t_game *game);
 void			ft_moves(mlx_key_data_t keydata, void *param);
 void			ft_close(void *param);
 int				ft_movable(mlx_key_data_t keydata, t_game *game);
-void 			ft_move(mlx_key_data_t keydata, t_game *game);
+void			ft_move(mlx_key_data_t keydata, t_game *game);
 
 /*INIT**********************************/
 t_game			*map_init(t_game *game);
@@ -101,7 +105,7 @@ t_data			*init_data(void);
 t_game			*map_pars(t_game *game);
 t_game			*make_map(t_game *game);
 t_game			*fill_map(t_game *game);
-void			fill_background(t_game *game, t_images *img);
+void			fill_background(t_game *g, t_images *img, uint32_t	x, uint32_t	y);
 t_game			*fill_elements(t_game *game, t_images *img);
 
 /*ERRORS******************************/

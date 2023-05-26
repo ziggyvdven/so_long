@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_pars.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zvandeven <zvandeven@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:16 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/24 18:21:00 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:05:09 by zvandeven        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ void	map_valid(t_game *game)
 		exit_failure(game, map_entries(game, "01CEP"));
 	if (map_elements(game))
 		exit_failure(game, map_elements(game));
-	if (flood_fill(game))
-		exit_failure(game, "Error\nINVALID MAP (FLOOD)");
+	// if (flood_fill(game))
+	// 	exit_failure(game, "Error\nINVALID MAP (FLOOD)");
 }
 
 t_game	*map_pars(t_game *game)

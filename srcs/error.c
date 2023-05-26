@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zvandeven <zvandeven@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:56:54 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/21 17:29:31 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:04:18 by zvandeven        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ void	del(void *content)
 
 void	exit_failure(t_game *game, char *error_message)
 {
-	int	y;
-
-	y = 0;
 	ft_putendl_fd(error_message, 2);
 	if (game->map_lst)
 		ft_lstclear(&game->map_lst, &del);
@@ -40,9 +37,6 @@ void	exit_failure(t_game *game, char *error_message)
 
 void	exit_succes(t_game *game)
 {
-	int	y;
-
-	y = 0;
 	if (game->map_lst)
 		ft_lstclear(&game->map_lst, &del);
 	if (game->map)

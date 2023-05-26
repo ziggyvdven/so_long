@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zvandeven <zvandeven@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:51:48 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/21 17:37:16 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:14:48 by zvandeven        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,10 @@ char	*map_elements(t_game *game)
 				data->exit++;
 		}
 	}
-	free (data);
 	if (data->player != 1)
 		return ("Error\nINVALID MAP (PLAYERS)");
 	if (data->exit != 1)
 		return ("Error\nINVALID MAP (EXITS)");
+	free (data);
 	return (0);
 }
