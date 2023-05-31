@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zvandeven <zvandeven@student.42.fr>        +#+  +:+       +#+        */
+/*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:40:58 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/26 16:40:19 by zvandeven        ###   ########.fr       */
+/*   Updated: 2023/05/31 19:17:25 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include	<stdbool.h>
 # include	<limits.h>
 # include	<fcntl.h>
-# define WIDTH 1500
-# define HEIGHT 1500
-# define TILE 75
+# define WIDTH 1600
+# define HEIGHT 1600
+# define TILE 100
 
 typedef struct s_game		t_game;
 typedef struct s_images		t_images;
@@ -97,6 +97,7 @@ void			ft_move(mlx_key_data_t keydata, t_game *game);
 /*INIT**********************************/
 t_game			*map_init(t_game *game);
 t_game			*game_init(int argc, char **argv);
+t_player		*init_player(void);
 t_images		*init_images(void);
 t_game			*load_png(t_game *game);
 t_data			*init_data(void);
@@ -105,12 +106,13 @@ t_data			*init_data(void);
 t_game			*map_pars(t_game *game);
 t_game			*make_map(t_game *game);
 t_game			*fill_map(t_game *game);
-void			fill_background(t_game *g, t_images *img, uint32_t	x, uint32_t	y);
+void			fill_backgr(t_game *g, t_images *img, uint32_t x, uint32_t y);
 t_game			*fill_elements(t_game *game, t_images *img);
 
 /*ERRORS******************************/
 void			exit_failure(t_game *game, char *error_message);
 void			putstr_exit(char *str, int fd);
 void			exit_succes(t_game *game);
+void			game_free(t_game *game);
 
 #endif

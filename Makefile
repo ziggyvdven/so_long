@@ -6,7 +6,7 @@
 #    By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 13:45:36 by zvandeven         #+#    #+#              #
-#    Updated: 2023/05/24 18:51:34 by zvan-de-         ###   ########.fr        #
+#    Updated: 2023/05/31 18:57:20 by zvan-de-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,6 @@ BONUS_PATH		= srcs_bonus/
 SRCS			= $(addprefix $(SRCS_PATH), $(SRCS_FILES))
 SRCS_BONUS		= $(addprefix $(SRCS_PATH), $(SRCS_BONUS_FILES))
 
-# Directories
-BINDIR			= bin/
-
 # Includes
 HEADERS			= -I ./include -I $(LIBMLX)/include -I $(LIBFT)/include
 
@@ -60,7 +57,10 @@ SRCS_FILES		= so_long.c player.c init.c map_pars.c error.c map_checks.c fill_map
 all: libft libmlx $(NAME) 
 
 libmlx:
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+	@if [ ! -d "$(LIBMLX)" ]; then \
+        git -C ./libs clone https://github.com/codam-coding-college/MLX42.git; \
+    fi
+	cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4; \
 
 $(NAME): $(OBJS_PATH) $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS) $(HEADERS)

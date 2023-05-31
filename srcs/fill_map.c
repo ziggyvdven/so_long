@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zvandeven <zvandeven@student.42.fr>        +#+  +:+       +#+        */
+/*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 12:20:10 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/26 18:22:27 by zvandeven        ###   ########.fr       */
+/*   Updated: 2023/05/31 14:39:39 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 t_game	*fill_map(t_game *game)
 {
 	game = load_png(game);
-	fill_background(game, game->img, 0, -1);
+	fill_backgr(game, game->img, 0, -1);
 	game = fill_elements(game, game->img);
 	return (game);
 }
 
-void	fill_background(t_game *g, t_images *img, uint32_t	x, uint32_t	y)
+void	fill_backgr(t_game *g, t_images *img, uint32_t	x, uint32_t	y)
 {
 	while (g->map[++y] != NULL)
 	{

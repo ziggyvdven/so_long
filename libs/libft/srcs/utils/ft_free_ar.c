@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 17:27:02 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/21 17:28:19 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/31 18:22:02 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_free_ar(char **ar)
 {
 	size_t	i;
 
+	if (!ar)
+		return ;
 	i = 0;
 	while (ar[i])
 	{
@@ -24,4 +26,5 @@ void	ft_free_ar(char **ar)
 		i++;
 	}
 	free(ar);
+	ar = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:37:10 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/21 17:22:22 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/05/31 18:28:07 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,14 @@ t_images	*init_images(void)
 	images = (t_images *)ft_calloc((sizeof(t_images)), 1);
 	if (!images)
 		return (NULL);
-	images->wall = NULL;
 	images->floor = NULL;
 	images->coll = NULL;
+	images->exit = NULL;
+	images->wall_t = NULL;
+	images->wall_b = NULL;
+	images->wall_l = NULL;
+	images->wall_r = NULL;
+	images->wall_e = NULL;
 	return (images);
 }
 
@@ -71,4 +76,21 @@ t_game	*game_init(int argc, char **argv)
 	game->img = init_images();
 	game->player = init_player();
 	return (game);
+}
+
+void	game_free(t_game *game)
+{
+	game->argc = 0;
+	game->map_lst = NULL;
+	game->map_path = NULL;
+	game->map = NULL;
+	game->mlx = NULL;
+	game->width = 0;
+	game->height = 0;
+	game->collectables = 0;
+	free(game->img);
+	game->img = NULL;
+	free(game->player);
+	game->player = NULL;
+	free(game);
 }
