@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:40:58 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/01 14:45:04 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/01 18:50:01 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,7 @@ typedef struct s_player
 	int			x;
 	int			y;
 	int			move_count;
-	mlx_image_t	*char_up;
-	mlx_image_t	*char_down;
-	mlx_image_t	*char_left;
-	mlx_image_t	*char_right;
+	mlx_image_t	*img;
 }				t_player;
 
 typedef struct s_images
@@ -71,6 +68,12 @@ typedef struct s_images
 	mlx_image_t		*wall_l;
 	mlx_image_t		*wall_r;
 	mlx_image_t		*wall_e;
+	mlx_image_t		*cor_lb;
+	mlx_image_t		*cor_rb;
+	mlx_image_t		*wall_trc;
+	mlx_image_t		*wall_tlc;
+	mlx_image_t		*wall_trc2;
+	mlx_image_t		*wall_tlc2;
 	mlx_image_t		*coll;
 	mlx_image_t		*exit;
 }				t_images;
@@ -92,11 +95,9 @@ char			*map_elements(t_game *game);
 int				flood_fill(t_game *game);
 
 /*PLAYER*******************************/
-void			ft_player(t_game *game);
+void			ft_player(t_game *game, t_player *p);
 void			ft_moves(mlx_key_data_t keydata, void *param);
 void			ft_close(void *param);
-int				ft_movable(mlx_key_data_t keydata, t_game *game);
-void			ft_move(mlx_key_data_t keydata, t_game *game);
 void			check_pos(void *param);
 
 /*INIT**********************************/
@@ -104,7 +105,6 @@ t_game			*map_init(t_game *game);
 t_game			*game_init(int argc, char **argv);
 t_player		*init_player(void);
 t_images		*init_images(void);
-t_game			*load_png(t_game *game);
 t_data			*init_data(void);
 
 /*MAP**********************************/
@@ -112,7 +112,20 @@ t_game			*map_pars(t_game *game);
 t_game			*make_map(t_game *game);
 t_game			*fill_map(t_game *game);
 void			fill_backgr(t_game *g, t_images *img, uint32_t x, uint32_t y);
+void			fill_floor(t_game *g, t_images *img, uint32_t x, uint32_t y);
+void			fill_walls(t_game *g, t_images *img, uint32_t x, uint32_t y);
 t_game			*fill_elements(t_game *game, t_images *img);
+
+/*IMAGES**********************************/
+mlx_image_t		*make_image(t_game *game, char *texture_path);
+t_game			*load_png(t_game *game);
+
+/*MOVES**********************************/
+void			move_up(t_game *g, t_player *p);
+void			move_down(t_game *g, t_player *p);
+void			move_left(t_game *g, t_player *p);
+void			move_right(t_game *g, t_player *p);
+void			exit_animation(t_game *g, t_player *p);
 
 /*ERRORS******************************/
 void			exit_failure(t_game *game, char *error_message);
