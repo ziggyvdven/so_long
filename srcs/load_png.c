@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_png.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zvandeven <zvandeven@student.42.fr>        +#+  +:+       +#+        */
+/*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 15:09:47 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/26 16:02:00 by zvandeven        ###   ########.fr       */
+/*   Updated: 2023/06/01 14:46:13 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ t_game	*load_png(t_game *game)
 	game->img->wall_e = make_image(game, "./textures/empty.png");
 	game->img->coll = make_image(game, "./textures/42_Logo.png");
 	game->img->exit = make_image(game, "./textures/exit.png");
-	game->player->img = make_image(game, "./textures/char.png");
+	game->player->char_down = make_image(game, "./textures/char_down.png");
+	game->player->char_up = make_image(game, "./textures/char_up.png");
+	game->player->char_left = make_image(game, "./textures/char_left.png");
+	game->player->char_right = make_image(game, "./textures/char_right.png");
 	return (game);
 }

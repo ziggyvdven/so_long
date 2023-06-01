@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 14:03:21 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/31 18:31:55 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/01 14:50:03 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,52 @@ void	ft_moves(mlx_key_data_t keydata, void *param)
 		ft_move(keydata, g);
 }
 
+void	check_pos(void *param)
+{
+	t_game	*g;
+	int		i;
+
+	g = param;
+	i = g->collectables;
+	while (i > -1)
+	{
+		if (g->player->x * TILE == g->img->coll->instances[i].x
+			&& g->player->y * TILE == g->img->coll->instances[i].y
+			&& g->map[g->player->y][g->player->x] == 'C')
+		{
+			mlx_set_instance_depth(&g->img->coll->instances[i], -1);
+			g->map[g->player->y][g->player->x] = '0';
+			g->collected++;
+		}
+	i--;
+	}	
+	if (g->map[g->player->y][g->player->x] == 'E'
+		&& g->collectables == g->collected)
+		exit_succes(g);
+}
+
 void	ft_move(mlx_key_data_t keydata, t_game *game)
 {
 	if (keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
 	{
-		game->player->img->instances[0].y -= TILE;
+		game->player->char_down->instances[0].y -= TILE;
 		game->player->y--;
+		mlx_delete_image(game->mlx, game->player->char_down);
+		mlx_image_to_window(game->mlx, game->player->char_up, game->player->x * TILE, game->player->y * TILE);
 	}
 	else if (keydata.key == MLX_KEY_DOWN || keydata.key == MLX_KEY_S)
 	{
-		game->player->img->instances[0].y += TILE;
+		game->player->char_down->instances[0].y += TILE;
 		game->player->y++;
 	}
 	else if (keydata.key == MLX_KEY_LEFT || keydata.key == MLX_KEY_A)
 	{
-		game->player->img->instances[0].x -= TILE;
+		game->player->char_down->instances[0].x -= TILE;
 		game->player->x--;
 	}
 	else if (keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_D)
 	{
-		game->player->img->instances[0].x += TILE;
+		game->player->char_down->instances[0].x += TILE;
 		game->player->x++;
 	}
 	game->player->move_count++;
@@ -84,6 +110,7 @@ void	ft_player(t_game *game)
 
 	x = game->player->x * TILE;
 	y = game->player->y * TILE;
-	mlx_image_to_window(game->mlx, game->player->img, x, y);
+	mlx_loop_hook(game->mlx, &check_pos, game);
+	mlx_image_to_window(game->mlx, game->player->char_down, x, y);
 	mlx_key_hook(game->mlx, &ft_moves, game);
 }

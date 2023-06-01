@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:40:58 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/31 19:17:25 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/01 14:45:04 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_game
 	char		*map_path;
 	char		**map;
 	int			collectables;
+	int			collected;
 	t_node		*map_lst;
 	t_images	*img;
 	uint32_t	width;
@@ -56,7 +57,10 @@ typedef struct s_player
 	int			x;
 	int			y;
 	int			move_count;
-	mlx_image_t	*img;
+	mlx_image_t	*char_up;
+	mlx_image_t	*char_down;
+	mlx_image_t	*char_left;
+	mlx_image_t	*char_right;
 }				t_player;
 
 typedef struct s_images
@@ -93,6 +97,7 @@ void			ft_moves(mlx_key_data_t keydata, void *param);
 void			ft_close(void *param);
 int				ft_movable(mlx_key_data_t keydata, t_game *game);
 void			ft_move(mlx_key_data_t keydata, t_game *game);
+void			check_pos(void *param);
 
 /*INIT**********************************/
 t_game			*map_init(t_game *game);

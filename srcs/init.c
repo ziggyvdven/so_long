@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:37:10 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/31 18:28:07 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/01 13:52:28 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ t_game	*game_init(int argc, char **argv)
 	game->width = 0;
 	game->height = 0;
 	game->collectables = 0;
+	game->collected = 0;
 	game->img = init_images();
 	game->player = init_player();
 	return (game);
