@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 15:24:24 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/01 16:06:34 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/02 18:47:19 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,24 +70,17 @@ void	move_right(t_game *g, t_player *p)
 
 void	exit_animation(t_game *g, t_player *p)
 {
-	(void) p;
-	sleep(1);
-	// mlx_set_instance_depth(&g->img->exit->instances[0], -1);
-	// mlx_delete_image(g->mlx, p->img);
-	// p->img = make_image(g, "./textures/char_right.png");
-	// mlx_image_to_window(g->mlx, p->img, p->x * TILE, p->y * TILE);
-	// sleep(1);
-	// mlx_delete_image(g->mlx, p->img);
-	// p->img = make_image(g, "./textures/char_up.png");
-	// mlx_image_to_window(g->mlx, p->img, p->x * TILE, p->y * TILE);
-	// sleep(1);
-	// mlx_delete_image(g->mlx, p->img);
-	// p->img = make_image(g, "./textures/char_left.png");
-	// mlx_image_to_window(g->mlx, p->img, p->x * TILE, p->y * TILE);
-	// sleep(1);
-	// mlx_delete_image(g->mlx, p->img);
-	// p->img = make_image(g, "./textures/char_down.png");
-	// mlx_image_to_window(g->mlx, p->img, p->x * TILE, p->y * TILE);
-	// sleep(1);
+	mlx_delete_image(g->mlx, p->img);
+	p->img = make_image(g, "./textures/char_right.png");
+	mlx_image_to_window(g->mlx, p->img, p->x * TILE, p->y * TILE);
+	mlx_delete_image(g->mlx, p->img);
+	p->img = make_image(g, "./textures/char_up.png");
+	mlx_image_to_window(g->mlx, p->img, p->x * TILE, p->y * TILE);
+	mlx_delete_image(g->mlx, p->img);
+	p->img = make_image(g, "./textures/char_left.png");
+	mlx_image_to_window(g->mlx, p->img, p->x * TILE, p->y * TILE);
+	mlx_delete_image(g->mlx, p->img);
+	p->img = make_image(g, "./textures/char_down.png");
+	mlx_image_to_window(g->mlx, p->img, p->x * TILE, p->y * TILE);
 	exit_succes(g);
 }

@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 14:03:21 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/01 18:59:36 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/02 18:33:08 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	check_pos(void *param)
 	int		i;
 
 	g = param;
-	i = g->collectables;
+	i = g->collectables - 1;
 	while (i > -1)
 	{
 		if (g->player->x * TILE == g->img->coll->instances[i].x
@@ -50,9 +50,33 @@ void	check_pos(void *param)
 		}
 	i--;
 	}	
+	if (g->collected == g->collectables)
+		exit_open(g);
 	if (g->map[g->player->y][g->player->x] == 'E'
 		&& g->collectables == g->collected)
 		exit_animation(g, g->player);
+}
+
+void	exit_open(t_game *g)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (g->map[++y] != NULL)
+	{
+		x = 0;
+		while (g->map[y][++x] != '\0')
+		{
+			if (g->map[y][x] == 'E')
+			{
+				mlx_delete_image(g->mlx, g->img->exit);
+				g->img->exit = make_image(g, "./textures/exit_open.png");
+				mlx_image_to_window(g->mlx, g->img->exit, x * TILE, y * TILE);
+			}
+		}
+	}
 }
 
 void	ft_player(t_game *game, t_player *p)

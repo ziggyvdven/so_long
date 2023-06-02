@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:40:58 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/01 18:50:01 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/02 18:32:51 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include	<fcntl.h>
 # define WIDTH 1600
 # define HEIGHT 1600
-# define TILE 100
+# define TILE 96
 
 typedef struct s_game		t_game;
 typedef struct s_images		t_images;
@@ -68,12 +68,14 @@ typedef struct s_images
 	mlx_image_t		*wall_l;
 	mlx_image_t		*wall_r;
 	mlx_image_t		*wall_e;
-	mlx_image_t		*cor_lb;
-	mlx_image_t		*cor_rb;
+	mlx_image_t		*wall_lbc;
+	mlx_image_t		*wall_rbc;
 	mlx_image_t		*wall_trc;
 	mlx_image_t		*wall_tlc;
-	mlx_image_t		*wall_trc2;
-	mlx_image_t		*wall_tlc2;
+	mlx_image_t		*mac_b;
+	mlx_image_t		*mac_t;
+	mlx_image_t		*mac_l;
+	mlx_image_t		*mac_r;
 	mlx_image_t		*coll;
 	mlx_image_t		*exit;
 }				t_images;
@@ -99,6 +101,7 @@ void			ft_player(t_game *game, t_player *p);
 void			ft_moves(mlx_key_data_t keydata, void *param);
 void			ft_close(void *param);
 void			check_pos(void *param);
+void			exit_open(t_game *g);
 
 /*INIT**********************************/
 t_game			*map_init(t_game *game);

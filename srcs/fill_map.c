@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 12:20:10 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/02 15:06:34 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/02 17:05:02 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ t_game	*fill_map(t_game *game)
 {
 	game = load_png(game);
 	fill_floor(game, game->img, 0, -1);
-	// fill_walls(game, game->img, 0, 0);
-	fill_backgr(game, game->img, 0, -1);
+	fill_walls(game, game->img, 0, 0);
+	fill_backgr(game, game->img, 0, 0);
 	game = fill_elements(game, game->img);
 	return (game);
 }
@@ -40,47 +40,45 @@ void	fill_floor(t_game *g, t_images *img, uint32_t x, uint32_t y)
 void	fill_walls(t_game *g, t_images *img, uint32_t x, uint32_t y)
 {
 	mlx_image_to_window(g->mlx, img->wall_tlc, 0, 0);
-	mlx_image_to_window(g->mlx, img->wall_tlc2, 0, 1 * TILE);
-	mlx_image_to_window(g->mlx, img->cor_lb, 0, (g->height - 1) * TILE);
-	mlx_image_to_window(g->mlx, img->cor_rb, (g->width - 1) * TILE, (g->height - 1) * TILE);
-	mlx_image_to_window(g->mlx, img->cor_lb, 0, (g->height - 1) * TILE);
-	mlx_image_to_window(g->mlx, img->cor_rb, (g->width - 1) * TILE, (g->height - 1) * TILE);
+	mlx_image_to_window(g->mlx, img->wall_trc, (g->width - 1) * TILE, 0);
+	mlx_image_to_window(g->mlx, img->wall_lbc, 0, (g->height - 1) * TILE);
+	mlx_image_to_window(g->mlx, img->wall_rbc,
+		(g->width - 1) * TILE, (g->height - 1) * TILE);
 	while (g->map[y][++x + 1] != '\0')
 	{
 		mlx_image_to_window(g->mlx, img->wall_t, x * TILE, y * TILE);
-		mlx_image_to_window(g->mlx, img->wall_b, x * TILE, (y + g->height - 1)  * TILE);
+		mlx_image_to_window(g->mlx, img->wall_b,
+			x * TILE, (y + g->height - 1) * TILE);
 	}
 	x = 0;
-	y = 1;
+	y = 0;
 	while (g->map[y++ + 2] != NULL)
 	{
 		mlx_image_to_window(g->mlx, img->wall_l, 0, y * TILE);
-		mlx_image_to_window(g->mlx, img->wall_r, (g->width - 1) * TILE, y  * TILE);
+		mlx_image_to_window(g->mlx, img->wall_r,
+			(g->width - 1) * TILE, y  * TILE);
 	}
 }
 
-
-void	fill_backgr(t_game *g, t_images *img, uint32_t	x, uint32_t	y)
+void	fill_backgr(t_game *g, t_images *img, uint32_t x, uint32_t y)
 {
-	while (g->map[++y] != NULL)
+	while (g->map[++y + 1] != NULL)
 	{
-		x = -1;
-		while (g->map[y][++x] != '\0')
+		x = 0;
+		while (g->map[y][++x + 1] != '\0')
 		{
-			if (g->map[y][x] == '1' || ((x == 0 || x == g->width - 1) || (y == 0 || y == g->height - 1)))
-				mlx_image_to_window(g->mlx, img->wall_e, x * TILE, y * TILE);
-			else if (g->map[y][x] == '1'
+			if (g->map[y][x] == '1'
 				&& y != g->height - 1 && g->map[y + 1][x] != '1')
-				mlx_image_to_window(g->mlx, img->wall_t, x * TILE, y * TILE);
+				mlx_image_to_window(g->mlx, img->mac_b, x * TILE, y * TILE);
 			else if (g->map[y][x] == '1' && y != 0 && g->map[y - 1][x] != '1')
-				mlx_image_to_window(g->mlx, img->wall_b, x * TILE, y * TILE);
+				mlx_image_to_window(g->mlx, img->mac_t, x * TILE, y * TILE);
 			else if (g->map[y][x] == '1'
 				&& x != g->width - 1 && g->map[y][x + 1] != '1')
-				mlx_image_to_window(g->mlx, img->wall_l, x * TILE, y * TILE);
+				mlx_image_to_window(g->mlx, img->mac_l, x * TILE, y * TILE);
 			else if (g->map[y][x] == '1' && x != 0 && g->map[y][x - 1] != '1')
-				mlx_image_to_window(g->mlx, img->wall_r, x * TILE, y * TILE);
-			// else if (g->map[y][x] == '1')
-			// 	mlx_image_to_window(g->mlx, img->wall_e, x * TILE, y * TILE);
+				mlx_image_to_window(g->mlx, img->mac_r, x * TILE, y * TILE);
+			else if (g->map[y][x] == '1')
+				mlx_image_to_window(g->mlx, img->wall_e, x * TILE, y * TILE);
 		}
 	}
 }

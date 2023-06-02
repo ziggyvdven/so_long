@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:37:10 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/01 13:52:28 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/02 15:57:50 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,14 @@ t_images	*init_images(void)
 	images->wall_l = NULL;
 	images->wall_r = NULL;
 	images->wall_e = NULL;
+	images->wall_trc = NULL;
+	images->wall_tlc = NULL;
+	images->wall_lbc = NULL;
+	images->wall_rbc = NULL;
+	images->mac_b = NULL;
+	images->mac_t = NULL;
+	images->mac_l = NULL;
+	images->mac_r = NULL;
 	return (images);
 }
 
