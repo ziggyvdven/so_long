@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 12:20:10 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/02 17:05:02 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/02 19:03:23 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ void	fill_backgr(t_game *g, t_images *img, uint32_t x, uint32_t y)
 				mlx_image_to_window(g->mlx, img->mac_t, x * TILE, y * TILE);
 			else if (g->map[y][x] == '1'
 				&& x != g->width - 1 && g->map[y][x + 1] != '1')
-				mlx_image_to_window(g->mlx, img->mac_l, x * TILE, y * TILE);
-			else if (g->map[y][x] == '1' && x != 0 && g->map[y][x - 1] != '1')
 				mlx_image_to_window(g->mlx, img->mac_r, x * TILE, y * TILE);
+			else if (g->map[y][x] == '1' && x != 0 && g->map[y][x - 1] != '1')
+				mlx_image_to_window(g->mlx, img->mac_l, x * TILE, y * TILE);
 			else if (g->map[y][x] == '1')
 				mlx_image_to_window(g->mlx, img->wall_e, x * TILE, y * TILE);
 		}

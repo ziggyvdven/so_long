@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 14:03:21 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/02 18:33:08 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/02 19:40:22 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ void	check_pos(void *param)
 		exit_open(g);
 	if (g->map[g->player->y][g->player->x] == 'E'
 		&& g->collectables == g->collected)
+	{
 		exit_animation(g, g->player);
+	}
 }
 
 void	exit_open(t_game *g)
