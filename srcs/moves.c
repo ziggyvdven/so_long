@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 15:24:24 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/02 19:40:16 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:39:33 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,24 @@ void	move_right(t_game *g, t_player *p)
 	check_pos(g);
 }
 
-void	exit_animation(t_game *g, t_player *p)
+void	exit_open(t_game *g)
 {
-		mlx_delete_image(g->mlx, p->img);
-		p->img = make_image(g, "./textures/char_right.png");
-		mlx_image_to_window(g->mlx, p->img, p->x * TILE, p->y * TILE);
-		mlx_delete_image(g->mlx, p->img);
-		usleep(500);
-		p->img = make_image(g, "./textures/char_up.png");
-		mlx_image_to_window(g->mlx, p->img, p->x * TILE, p->y * TILE);
-		mlx_delete_image(g->mlx, p->img);
-		usleep(500);
-		p->img = make_image(g, "./textures/char_left.png");
-		mlx_image_to_window(g->mlx, p->img, p->x * TILE, p->y * TILE);
-		mlx_delete_image(g->mlx, p->img);
-		usleep(500);
-		p->img = make_image(g, "./textures/char_down.png");
-		mlx_image_to_window(g->mlx, p->img, p->x * TILE, p->y * TILE);
-	return ;
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (g->map[++y] != NULL)
+	{
+		x = 0;
+		while (g->map[y][++x] != '\0')
+		{
+			if (g->map[y][x] == 'E')
+			{
+				mlx_delete_image(g->mlx, g->img->exit);
+				g->img->exit = make_image(g, "./textures/exit_open.png");
+				mlx_image_to_window(g->mlx, g->img->exit, x * TILE, y * TILE);
+			}
+		}
+	}
 }

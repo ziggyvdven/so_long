@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:40:58 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/02 18:32:51 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:16:44 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 typedef struct s_game		t_game;
 typedef struct s_images		t_images;
 typedef struct s_player		t_player;
+typedef struct s_enemy		t_enemy;
 
 typedef struct s_game
 {
@@ -36,11 +37,14 @@ typedef struct s_game
 	char		**map;
 	int			collectables;
 	int			collected;
+	bool		end;
+	mlx_image_t	*move_count;
 	t_node		*map_lst;
 	t_images	*img;
 	uint32_t	width;
 	uint32_t	height;
 	t_player	*player;
+	t_enemy		*enemy;
 }				t_game;
 
 typedef struct s_map
@@ -59,6 +63,15 @@ typedef struct s_player
 	int			move_count;
 	mlx_image_t	*img;
 }				t_player;
+
+typedef struct s_enemy
+{
+	int			x;
+	int			y;
+	mlx_image_t	*img1;
+	mlx_image_t	*img2;
+	mlx_image_t	*img3;
+}				t_enemy;
 
 typedef struct s_images
 {
@@ -95,6 +108,7 @@ int				map_close(t_game *game);
 char			*map_entries(t_game *game, char *str);
 char			*map_elements(t_game *game);
 int				flood_fill(t_game *game);
+void			ft_game_end(void *param);
 
 /*PLAYER*******************************/
 void			ft_player(t_game *game, t_player *p);
@@ -109,6 +123,7 @@ t_game			*game_init(int argc, char **argv);
 t_player		*init_player(void);
 t_images		*init_images(void);
 t_data			*init_data(void);
+t_enemy			*init_enemy(t_game *game);
 
 /*MAP**********************************/
 t_game			*map_pars(t_game *game);
@@ -119,11 +134,12 @@ void			fill_floor(t_game *g, t_images *img, uint32_t x, uint32_t y);
 void			fill_walls(t_game *g, t_images *img, uint32_t x, uint32_t y);
 t_game			*fill_elements(t_game *game, t_images *img);
 
-/*IMAGES**********************************/
+/*IMAGES******************************/
 mlx_image_t		*make_image(t_game *game, char *texture_path);
 t_game			*load_png(t_game *game);
+void			ft_move_count(void *param);
 
-/*MOVES**********************************/
+/*MOVES*******************************/
 void			move_up(t_game *g, t_player *p);
 void			move_down(t_game *g, t_player *p);
 void			move_left(t_game *g, t_player *p);
@@ -135,5 +151,11 @@ void			exit_failure(t_game *game, char *error_message);
 void			putstr_exit(char *str, int fd);
 void			exit_succes(t_game *game);
 void			game_free(t_game *game);
+
+/*ENEMY******************************/
+void			ft_enemy(t_game *game);
+
+/*LOOPHOOKS**************************/
+void			ft_animations(void *param);
 
 #endif
