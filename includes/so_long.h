@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:40:58 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/07 17:16:44 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/08 11:41:29 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,7 @@ typedef struct s_enemy
 {
 	int			x;
 	int			y;
-	mlx_image_t	*img1;
-	mlx_image_t	*img2;
-	mlx_image_t	*img3;
+	mlx_image_t	*img[4];
 }				t_enemy;
 
 typedef struct s_images
