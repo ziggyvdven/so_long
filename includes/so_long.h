@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:40:58 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/08 11:41:29 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/08 14:35:14 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ void			game_free(t_game *game);
 
 /*ENEMY******************************/
 void			ft_enemy(t_game *game);
+uint32_t		random_num(void);
 
 /*LOOPHOOKS**************************/
 void			ft_animations(void *param);
