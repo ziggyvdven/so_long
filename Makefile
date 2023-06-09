@@ -6,7 +6,7 @@
 #    By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 13:45:36 by zvandeven         #+#    #+#              #
-#    Updated: 2023/06/09 15:59:05 by zvan-de-         ###   ########.fr        #
+#    Updated: 2023/06/09 19:17:10 by zvan-de-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,7 @@ bonus:
 clean:
 	@rm -rf $(OBJS) $(OBJS_PATH)
 	@$(MAKE) -C $(LIBFT) clean
+	@rm -rf ./libs/MLX42
 	@rm -rf $(LIBMLX)/build
 
 fclean: clean
