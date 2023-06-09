@@ -10,7 +10,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "/Users/zvan-de-/42cursus/so_long/so_long",
-			"args": ["small.ber"],
+			"args": ["map5.ber"],
 			"stopAtEntry": false,
 			"cwd": "/Users/zvan-de-/42cursus/so_long/",
 			"environment": [],

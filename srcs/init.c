@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:37:10 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/01 13:52:28 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:55:43 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,14 @@ t_images	*init_images(void)
 	images->wall_l = NULL;
 	images->wall_r = NULL;
 	images->wall_e = NULL;
+	images->wall_trc = NULL;
+	images->wall_tlc = NULL;
+	images->wall_lbc = NULL;
+	images->wall_rbc = NULL;
+	images->mac_b = NULL;
+	images->mac_t = NULL;
+	images->mac_l = NULL;
+	images->mac_r = NULL;
 	return (images);
 }
 
@@ -74,8 +82,12 @@ t_game	*game_init(int argc, char **argv)
 	game->height = 0;
 	game->collectables = 0;
 	game->collected = 0;
+	game->move_count = NULL;
+	game->img_count = 0;
 	game->img = init_images();
 	game->player = init_player();
+	game->enemy = NULL;
+	game->end = false;
 	return (game);
 }
 
@@ -89,9 +101,15 @@ void	game_free(t_game *game)
 	game->width = 0;
 	game->height = 0;
 	game->collectables = 0;
-	free(game->img);
+	game->move_count = NULL;
+	if (game->img)
+		free(game->img);
 	game->img = NULL;
-	free(game->player);
+	if (game->player)
+		free(game->player);
 	game->player = NULL;
+	if (game->enemy)
+		free(game->enemy);
+	game->enemy = NULL;
 	free(game);
 }

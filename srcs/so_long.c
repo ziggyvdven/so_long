@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:51:12 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/31 18:53:04 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:45:12 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ int32_t	main(int argc, char **argv)
 	game = game_init(argc, argv);
 	map_pars(game);
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
-	game->mlx = mlx_init(game->width * 100, game->height * 100, "so_long", true);
+	game->mlx = mlx_init(game->width * 96, game->height * 96, "so_long", true);
 	if (!game->mlx)
 		exit_failure(game, "Error\nUNABLE TO INITIALIZE MLX");
 	game = fill_map(game);
-	ft_player(game);
+	ft_player(game, game->player);
+	if (ft_enemy(game))
+		mlx_loop_hook(game->mlx, &ft_animations, game);
 	mlx_close_hook(game->mlx, &ft_close, game);
 	mlx_loop(game->mlx);
 	return (0);
