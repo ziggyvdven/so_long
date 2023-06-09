@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:51:12 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/08 16:08:29 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:45:12 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int32_t	main(int argc, char **argv)
 		exit_failure(game, "Error\nUNABLE TO INITIALIZE MLX");
 	game = fill_map(game);
 	ft_player(game, game->player);
-	ft_enemy(game);
-	mlx_loop_hook(game->mlx, &ft_animations, game);
+	if (ft_enemy(game))
+		mlx_loop_hook(game->mlx, &ft_animations, game);
 	mlx_close_hook(game->mlx, &ft_close, game);
 	mlx_loop(game->mlx);
 	return (0);

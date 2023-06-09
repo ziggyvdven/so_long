@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 14:03:21 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/07 16:39:39 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:48:28 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ void	ft_moves(mlx_key_data_t keydata, void *param)
 	g = param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		exit_succes(g);
-	if (g->end == true)
-		ft_game_end(g);
-	if (g->end == false)
+	if (g->end == 0)
 	{
 		if (mlx_is_key_down(g->mlx, 265) || mlx_is_key_down(g->mlx, 87))
 			move_up(g, g->player);
@@ -46,8 +44,8 @@ void	check_pos(void *param)
 	ft_move_count(g);
 	while (i > -1)
 	{
-		if (g->player->x * TILE == g->img->coll->instances[i].x
-			&& g->player->y * TILE == g->img->coll->instances[i].y
+		if ((int)g->player->x * TILE == g->img->coll->instances[i].x
+			&& (int)g->player->y * TILE == g->img->coll->instances[i].y
 			&& g->map[g->player->y][g->player->x] == 'C')
 		{
 			mlx_set_instance_depth(&g->img->coll->instances[i], -1);
@@ -60,7 +58,9 @@ void	check_pos(void *param)
 		exit_open(g);
 	if (g->map[g->player->y][g->player->x] == 'E'
 		&& g->collectables == g->collected)
-		g->end = true;
+		g->end = 1;
+	if (g->player->x == g->enemy->x && g->player->y == g->enemy->y)
+		g->end = 2;
 }
 
 void	ft_move_count(void *param)
@@ -74,24 +74,6 @@ void	ft_move_count(void *param)
 	g->move_count = mlx_put_string(g->mlx, str, 163, (g->height - 0.5) * TILE);
 	free (str);
 }
-
-void	ft_game_end(void *param)
-{
-	t_game		*g;
-	t_player	*p;
-	int			i;
-
-	g = param;
-	p = g->player;
-	i = 100;
-	if (g->end == true)
-	{
-		mlx_delete_image(g->mlx, p->img);
-		p->img = make_image(g, "./textures/char_up.png");
-		mlx_image_to_window(g->mlx, p->img, p->x * TILE, p->y * TILE);
-	}
-}
-
 
 void	ft_player(t_game *g, t_player *p)
 {

@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:40:58 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/08 14:35:14 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:11:28 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ typedef struct s_game
 	char		**map;
 	int			collectables;
 	int			collected;
-	bool		end;
+	int			imgs;
+	int			end;
 	mlx_image_t	*move_count;
 	t_node		*map_lst;
 	t_images	*img;
@@ -58,16 +59,16 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	int			x;
-	int			y;
+	uint32_t	x;
+	uint32_t	y;
 	int			move_count;
 	mlx_image_t	*img;
 }				t_player;
 
 typedef struct s_enemy
 {
-	int			x;
-	int			y;
+	uint32_t	x;
+	uint32_t	y;
 	mlx_image_t	*img[4];
 }				t_enemy;
 
@@ -130,7 +131,7 @@ t_game			*fill_map(t_game *game);
 void			fill_backgr(t_game *g, t_images *img, uint32_t x, uint32_t y);
 void			fill_floor(t_game *g, t_images *img, uint32_t x, uint32_t y);
 void			fill_walls(t_game *g, t_images *img, uint32_t x, uint32_t y);
-t_game			*fill_elements(t_game *game, t_images *img);
+t_game			*fill_elements(t_game *game, t_images *img, int x, int y);
 
 /*IMAGES******************************/
 mlx_image_t		*make_image(t_game *game, char *texture_path);
@@ -142,7 +143,6 @@ void			move_up(t_game *g, t_player *p);
 void			move_down(t_game *g, t_player *p);
 void			move_left(t_game *g, t_player *p);
 void			move_right(t_game *g, t_player *p);
-void			exit_animation(t_game *g, t_player *p);
 
 /*ERRORS******************************/
 void			exit_failure(t_game *game, char *error_message);
@@ -151,10 +151,14 @@ void			exit_succes(t_game *game);
 void			game_free(t_game *game);
 
 /*ENEMY******************************/
-void			ft_enemy(t_game *game);
-uint32_t		random_num(void);
-
-/*LOOPHOOKS**************************/
+int				find_random_empty_spot(t_game *g, int i);
+uint32_t		random_num(u_int32_t i);
+int				ft_enemy(t_game *game);
+void			move_enemy(t_game *g, t_player *p, t_enemy *e);
+void			ft_move_enemy_down(t_game *g, t_enemy *e);
+void			ft_move_enemy_up(t_game *g, t_enemy *e);
+void			ft_move_enemy_left(t_game *g, t_enemy *e);
+void			ft_move_enemy_right(t_game *g, t_enemy *e);
 void			ft_animations(void *param);
 
 #endif
