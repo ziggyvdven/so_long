@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:58:39 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/09 16:14:57 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/15 11:31:00 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	ft_enemy(t_game *game)
 	int		i;
 
 	i = 0;
-	ft_printf("imgs: %d\n", game->imgs);
 	game->enemy = init_enemy(game);
 	if (find_random_empty_spot(game, 0))
 	{

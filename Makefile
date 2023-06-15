@@ -6,7 +6,7 @@
 #    By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 13:45:36 by zvandeven         #+#    #+#              #
-#    Updated: 2023/06/09 19:17:10 by zvan-de-         ###   ########.fr        #
+#    Updated: 2023/06/15 11:49:30 by zvan-de-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,15 @@ $(OBJS_PATH):
 libft:
 	@echo "$(G)\n -- LOADING --$(RT)"
 	@$(MAKE) -C $(LIBFT)
+
+brew:
+	brew --version || curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh
+
+glfw: brew
+	brew install glfw
+
+cmake : glfw
+	cmake --version | brew install cmake
 
 bonus: 
 	@$(MAKE) "NAME=$(NAME_BONUS)" "OBJS=$(OBJS_BONUS)" "SRCS_FILES=$(SRCS_BONUS_FILES)" "SRCS_PATH=$(BONUS_PATH)"

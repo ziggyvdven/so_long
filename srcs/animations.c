@@ -6,12 +6,11 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:41:33 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/09 18:52:00 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/15 11:33:48 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
 
 void	ft_set_depth(t_game *g, int i)
 {

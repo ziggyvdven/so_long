@@ -6,12 +6,11 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 14:03:21 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/09 18:48:28 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/15 11:36:19 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
 
 void	ft_moves(mlx_key_data_t keydata, void *param)
 {

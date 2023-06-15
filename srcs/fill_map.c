@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 12:20:10 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/09 18:00:51 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/15 11:36:09 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	fill_backgr(t_game *g, t_images *img, uint32_t x, uint32_t y)
 	}
 }
 
-t_game	*fill_elements(t_game *game, t_images *img , int x, int y)
+t_game	*fill_elements(t_game *game, t_images *img, int x, int y)
 {
 	while (game->map[++y] != NULL)
 	{
