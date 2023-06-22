@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:40:58 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/09 17:11:28 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/15 17:16:41 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,6 @@ void			move_right(t_game *g, t_player *p);
 
 /*ERRORS******************************/
 void			exit_failure(t_game *game, char *error_message);
-void			putstr_exit(char *str, int fd);
 void			exit_succes(t_game *game);
 void			game_free(t_game *game);
 

@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:51:12 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/09 18:45:12 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/15 14:41:54 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,12 @@ int32_t	main(int argc, char **argv)
 {
 	t_game			*game;
 
+	if (argc != 2)
+		return (1);
 	game = game_init(argc, argv);
 	map_pars(game);
+	if (!game)
+		return (1);
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	game->mlx = mlx_init(game->width * 96, game->height * 96, "so_long", true);
 	if (!game->mlx)

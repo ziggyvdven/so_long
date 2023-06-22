@@ -6,7 +6,7 @@
 /*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:51:48 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/15 11:31:32 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2023/06/22 14:09:57 by zvan-de-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	map_rec(t_game *game)
 	uint32_t	y;
 
 	ptr = game->map_lst;
+	if (!ptr->next)
+		return (0);
 	y = -1;
 	while (++y < game->height)
 	{
