@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zvandeven <zvandeven@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:51:48 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/07 16:38:43 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:44:21 by zvandeven        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	map_rec(t_game *game)
 		if (ptr->next != NULL)
 			ptr = ptr->next;
 	}
-	if (strnstr(ptr->str, "\n", strlen(ptr->str)))
+	if (ft_strnstr(ptr->str, "\n", strlen(ptr->str)))
 		return (0);
 	return (1);
 }

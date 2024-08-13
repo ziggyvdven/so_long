@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zvandeven <zvandeven@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 18:20:04 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/05/31 18:25:52 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:46:44 by zvandeven        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_map	*check_spot(t_game *game, t_map *copy, int x, int y)
 
 void	flood(t_game *game, t_map *copy, uint32_t x, uint32_t y)
 {
-	if (x < 0 || y < 0 || x >= game->width || y >= game->height)
+	if (x >= game->width || y >= game->height)
 		return ;
 	if (copy->map[y][x] == '1')
 		return ;
@@ -55,6 +55,7 @@ int	flood_fill(t_game *game)
 
 	copy.collectables = 0;
 	copy.exit = 0;
+	copy.map = NULL;
 	copy.map = map_copy(game, copy.map);
 	flood(game, &copy, game->player->x, game->player->y);
 	ft_free_ar(copy.map);

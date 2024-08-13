@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zvandeven <zvandeven@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 12:20:10 by zvan-de-          #+#    #+#             */
-/*   Updated: 2023/06/09 18:00:51 by zvan-de-         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:44:53 by zvandeven        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,6 @@ void	fill_floor(t_game *g, t_images *img, uint32_t x, uint32_t y)
 
 void	fill_walls(t_game *g, t_images *img, uint32_t x, uint32_t y)
 {
-	int	i;
-
-	i = 0;
 	mlx_image_to_window(g->mlx, img->wall_tlc, 0, 0);
 	mlx_image_to_window(g->mlx, img->wall_trc, (g->width - 1) * TILE, 0);
 	mlx_image_to_window(g->mlx, img->wall_lbc, 0, (g->height - 1) * TILE);
