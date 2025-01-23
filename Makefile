@@ -6,7 +6,7 @@
 #    By: zvan-de- <zvan-de-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 13:45:36 by zvandeven         #+#    #+#              #
-#    Updated: 2023/06/09 19:17:10 by zvan-de-         ###   ########.fr        #
+#    Updated: 2024/08/15 14:14:59 by zvan-de-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ HEADERS			= -I ./include -I $(LIBMLX)/include -I $(LIBFT)/include
 # library and source files
 LIBFT			= ./libs/libft
 LIBMLX  		= ./libs/MLX42
-LIBS			= $(LIBFT)/libft.a $(LIBMLX)/build/libmlx42.a -ldl -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -pthread -lm
+LIBS			= $(LIBFT)/libft.a $(LIBMLX)/build/libmlx42.a -ldl -lglfw -L"/Users/$(USER)/homebrew/opt/glfw/lib/" -pthread -lm
 SRCS_FILES		= so_long.c player.c init.c map_pars.c error.c map_checks.c fill_map.c load_png.c flood_fill.c moves.c\
 				enemy.c animations.c enemy_moves.c\
 
